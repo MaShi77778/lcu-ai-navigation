@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="兰州城市学院 AI 工具导航，汇集大模型、AI 绘图、视频、写作、办公与编程工具。" />
+<title>兰城智汇 · AI 工具导航</title>
+<style>
+/* ===== 基础主题变量：修改这里可统一调整配色 ===== */
+:root{--bg:#f5f7fb;--panel:#fff;--card:#fff;--text:#202638;--muted:#778096;--line:#e8ebf2;--accent:#4169e1;--accent2:#7658e8;--soft:#edf1ff;--shadow:0 8px 28px rgba(35,48,85,.06)}
+body.dark{--bg:#111522;--panel:#191e2d;--card:#202638;--text:#eef1fb;--muted:#a0a8bc;--line:#30374a;--accent:#8ca5ff;--accent2:#b4a0ff;--soft:#2a3150;--shadow:0 8px 28px rgba(0,0,0,.18)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 "Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .2s,color .2s}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}
+.topbar{height:76px;position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:24px;padding:0 4.5%;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;min-width:250px}.logo-slot{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#4568e8,#8b6be8);display:grid;place-items:center;color:white;font-weight:800;overflow:hidden;flex-shrink:0}.logo-slot img{width:100%;height:100%;object-fit:contain;display:none;background:white}.brand-title{font-size:19px;font-weight:800;letter-spacing:.5px}.brand-sub{font-size:11px;color:var(--muted);margin-top:1px}.topnav{display:flex;align-items:center;gap:8px;flex:1}.topnav a{padding:9px 13px;border-radius:10px;color:var(--muted);white-space:nowrap}.topnav a:hover,.topnav a.active{background:var(--soft);color:var(--accent)}.top-actions{display:flex;gap:9px;align-items:center}.icon-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);width:40px;height:40px;border-radius:12px;font-size:17px}.school-link{background:var(--accent);color:white;padding:10px 14px;border-radius:11px;font-weight:700;white-space:nowrap}.mobile-menu{display:none}
+.layout{max-width:1500px;margin:26px auto;padding:0 24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px}.sidebar{align-self:start;position:sticky;top:100px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 14px;box-shadow:var(--shadow)}.side-heading{font-weight:800;font-size:12px;color:var(--muted);letter-spacing:1.5px;padding:0 12px 12px}.category{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;color:var(--muted);padding:12px;border-radius:11px;text-align:left;margin:2px 0}.category .emoji{font-size:18px;width:24px;text-align:center}.category:hover,.category.active{background:var(--soft);color:var(--accent);font-weight:700}.side-note{border-top:1px solid var(--line);margin-top:18px;padding:16px 10px 4px;font-size:12px;color:var(--muted)}
+.main{min-width:0}.hero{padding:28px 30px;border-radius:20px;background:linear-gradient(115deg,#eaf0ff,#f5efff 70%,#edf8ff);color:#202b50;position:relative;overflow:hidden;margin-bottom:22px}.dark .hero{background:linear-gradient(115deg,#252e50,#302849 70%,#20384b);color:#f0f2ff}.hero:after{content:"✦";position:absolute;right:7%;top:-40px;font-size:180px;color:rgba(99,112,225,.1)}.eyebrow{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--accent);text-transform:uppercase}.hero h1{font-size:clamp(25px,3vw,36px);margin:9px 0 8px;line-height:1.25}.hero p{max-width:660px;margin:0;color:var(--muted)}.hero-bottom{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:20px}.searchbox{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 14px;height:46px;max-width:470px;flex:1;min-width:220px;color:var(--muted)}.searchbox input{border:0;outline:0;background:transparent;color:var(--text);width:100%;min-width:0}.quick-pill{padding:10px 14px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--text)}.quick-pill:hover{border-color:var(--accent);color:var(--accent)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:25px 2px 14px}.section-head h2{font-size:19px;margin:0}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}.count{font-size:12px;color:var(--muted)}.tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.tool-card{display:flex;gap:13px;min-height:128px;padding:17px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 8px rgba(30,40,70,.015);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;position:relative}.tool-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 48%,var(--line));box-shadow:var(--shadow)}.tool-icon{width:45px;height:45px;flex:0 0 45px;border-radius:13px;display:grid;place-items:center;font-size:23px;font-weight:800;color:#fff;background:var(--gradient,linear-gradient(135deg,#5276e8,#8b70e9));overflow:hidden}.tool-icon img{width:100%;height:100%;object-fit:cover}.tool-info{min-width:0;flex:1}.tool-title-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.tool-title{font-size:15px;font-weight:800}.tag{font-size:10px;padding:2px 6px;border-radius:5px;background:var(--soft);color:var(--accent)}.tool-desc{font-size:12px;color:var(--muted);margin:6px 0 12px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.tool-foot{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)}.visit{color:var(--accent);font-weight:700}.empty{padding:45px 15px;text-align:center;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:16px;display:none}.pagination{display:flex;align-items:center;justify-content:center;gap:8px;margin:24px 0 10px}.page-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:8px 13px;border-radius:9px}.page-btn.active,.page-btn:hover{background:var(--accent);border-color:var(--accent);color:white}.page-btn:disabled{opacity:.4;cursor:not-allowed}.page-status{font-size:12px;color:var(--muted);margin:0 8px}.footer{border-top:1px solid var(--line);margin-top:35px;padding:24px 10px 18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:12px}.footer a{color:var(--accent)}.notice{font-size:11px;color:var(--muted);margin-top:10px}
+@media(max-width:1100px){.topbar{gap:12px;padding:0 20px}.brand{min-width:auto}.brand-sub{display:none}.topnav{gap:0}.topnav a{padding:8px}.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.school-link{display:none}}
+@media(max-width:760px){.topbar{height:auto;min-height:68px;flex-wrap:wrap;padding:12px 16px}.brand-title{font-size:16px}.topnav{order:3;overflow:auto;width:100%;flex-basis:100%;display:none}.topnav.open{display:flex}.mobile-menu{display:inline-block}.layout{grid-template-columns:1fr;padding:0 14px;margin:16px auto}.sidebar{position:static;padding:12px;overflow:auto;white-space:nowrap}.side-heading,.side-note{display:none}.category{display:inline-flex;width:auto;padding:9px 12px;margin:0 3px 0 0}.category .emoji{display:none}.hero{padding:23px 20px}.tools-grid{grid-template-columns:1fr}.tool-card{min-height:112px}.section-head{margin-top:22px}.footer{padding-bottom:30px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home" aria-label="兰城智汇首页">
+    <!-- Logo预留：将下方文字替换成 <img id="schoolLogo" src="./lcu-logo.png" alt="兰州城市学院"> 即可；也可在 JS 配置 logoUrl -->
+    <div class="logo-slot" id="logoSlot"><span id="logoFallback">兰</span><img id="schoolLogo" alt="兰州城市学院 Logo"></div>
+    <div><div class="brand-title">兰城智汇 <span style="color:var(--accent)">· AI导航</span></div><div class="brand-sub">LANZHOU CITY UNIVERSITY · AI TOOLBOX</div></div>
+  </a>
+  <nav class="topnav" id="topnav"><a class="active" href="#home">首页</a><a href="#tools" data-quick="AI视频">免费AI视频</a><a href="#tools" data-quick="AI绘图">AI绘图</a><a href="#tools" data-quick="AI写作">AI写作</a><a href="#tools" data-quick="办公工具">办公工具</a></nav>
+  <div class="top-actions"><a class="school-link" id="schoolLink" href="https://www.lzcu.edu.cn/" target="_blank" rel="noopener">学校官网 ↗</a><button class="icon-btn mobile-menu" id="menuBtn" aria-label="展开导航">☰</button><button class="icon-btn" id="themeBtn" aria-label="切换深色模式" title="切换浅色/深色模式">☾</button></div>
+</header>
+<div class="layout" id="home">
+  <aside class="sidebar"><div class="side-heading">探索工具分类</div><div id="categoryList"></div><div class="side-note">精选常用 AI 工具入口<br>点击卡片即可访问官网<br><br>工具服务及免费额度以官网说明为准。</div></aside>
+  <main class="main">
+    <section class="hero"><div class="eyebrow">AI tools · made simple</div><h1>让灵感与效率，一站触达</h1><p>汇集主流人工智能工具，从大模型对话、绘图视频到学习办公与代码开发。快速发现适合你的 AI 助手。</p><div class="hero-bottom"><label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="搜索工具名称、功能或关键词…" autocomplete="off"></label><button class="quick-pill" data-category="全部工具">✦ 全部工具</button><button class="quick-pill" data-category="大模型">✧ 大模型</button><button class="quick-pill" data-category="AI绘图">◈ AI绘图</button></div></section>
+    <section id="tools"><div class="section-head"><div><h2 id="sectionTitle">热门 AI 工具</h2><p id="sectionSubtitle">从这里开始，发现你的效率搭档</p></div><div class="count" id="resultCount"></div></div><div class="tools-grid" id="toolsGrid"></div><div class="empty" id="emptyState">没有找到匹配的工具，试试其他关键词吧。</div><div class="pagination" id="pagination"></div></section>
+    <footer class="footer"><div>© <span id="year"></span> 兰城智汇 · AI 工具导航 <span style="margin-left:6px">非官方导航页面</span></div><div><a id="footerSchoolLink" href="https://www.lzcu.edu.cn/" target="_blank" rel="noopener">兰州城市学院官网</a>　·　工具链接均指向各服务公开网站</div><div class="notice" style="flex-basis:100%">提示：部分工具需要注册、可能受地区或网络条件限制；名称、服务内容及免费额度可能随官网更新。</div></footer>
+  </main>
+</div>
+<script>
+/* ====================== 可自定义配置区 ======================
+   1. SCHOOL_URL：兰州城市学院官网地址
+   2. LOGO_URL：替换为你的校徽图片地址；留空则显示“兰”字占位
+   3. PAGE_SIZE：每页卡片数量
+   ========================================================== */
+const SCHOOL_URL = 'https://www.lzcu.edu.cn/';
+const LOGO_URL = ''; // 示例：'./images/lzcu-logo.png'
+const PAGE_SIZE = 12;
+
+// 工具数据：可按 {name, desc, category, url, icon, tag} 的格式继续添加。
+const tools = [
+{name:'ChatGPT',desc:'通用 AI 对话、写作、分析与多模态助手。',category:'大模型',url:'https://chatgpt.com/',icon:'✳',tag:'热门'},
+{name:'Claude',desc:'擅长长文理解、文案整理与复杂任务协作。',category:'大模型',url:'https://claude.ai/',icon:'C',tag:'推荐'},
+{name:'Google Gemini',desc:'Google 的多模态 AI 助手与学习伙伴。',category:'大模型',url:'https://gemini.google.com/',icon:'✦'},
+{name:'Microsoft Copilot',desc:'日常问答、内容生成与微软生态 AI 助手。',category:'大模型',url:'https://copilot.microsoft.com/',icon:'∞'},
+{name:'DeepSeek',desc:'中文对话、推理、代码与资料分析助手。',category:'大模型',url:'https://chat.deepseek.com/',icon:'鲸',tag:'中文'},
+{name:'通义千问',desc:'阿里云通义系列大模型在线助手。',category:'大模型',url:'https://www.qianwen.com/',icon:'通'},
+{name:'豆包',desc:'中文 AI 助手，支持问答、写作与图像理解。',category:'大模型',url:'https://www.doubao.com/',icon:'豆'},
+{name:'Kimi',desc:'长文本阅读、资料总结与联网研究助手。',category:'大模型',url:'https://kimi.moonshot.cn/',icon:'K'},
+{name:'智谱清言',desc:'中文对话、写作、学习和智能体工具。',category:'大模型',url:'https://chatglm.cn/',icon:'智'},
+{name:'腾讯元宝',desc:'腾讯推出的 AI 助手，支持问答与内容处理。',category:'大模型',url:'https://yuanbao.tencent.com/',icon:'元'},
+{name:'文心一言',desc:'百度 AI 助手，支持中文创作与知识问答。',category:'大模型',url:'https://yiyan.baidu.com/',icon:'文'},
+{name:'讯飞星火',desc:'科大讯飞 AI 助手，覆盖写作、学习与办公。',category:'大模型',url:'https://xinghuo.xfyun.cn/',icon:'星'},
+{name:'Midjourney',desc:'高质量风格化图像生成与视觉创作。',category:'AI绘图',url:'https://www.midjourney.com/',icon:'✺',tag:'热门'},
+{name:'Adobe Firefly',desc:'生成式图像、填充与创意设计辅助。',category:'AI绘图',url:'https://firefly.adobe.com/',icon:'✷'},
+{name:'Leonardo AI',desc:'游戏素材、概念艺术与图像生成平台。',category:'AI绘图',url:'https://leonardo.ai/',icon:'◉'},
+{name:'Ideogram',desc:'擅长带文字的海报、标识与创意图像。',category:'AI绘图',url:'https://ideogram.ai/',icon:'I'},
+{name:'即梦 AI',desc:'中文创意图像生成与视觉设计工具。',category:'AI绘图',url:'https://jimeng.jianying.com/',icon:'即'},
+{name:'文心一格',desc:'中文 AI 艺术和创意图片生成。',category:'AI绘图',url:'https://yige.baidu.com/',icon:'画'},
+{name:'Stable Diffusion',desc:'开源图像生成生态与模型资源入口。',category:'AI绘图',url:'https://stability.ai/',icon:'◈'},
+{name:'Canva 可画',desc:'在线设计平台，包含 AI 设计与图像功能。',category:'设计师',url:'https://www.canva.com/',icon:'C'},
+{name:'Figma',desc:'界面设计、原型协作与设计系统工具。',category:'设计师',url:'https://www.figma.com/',icon:'F'},
+{name:'Remove.bg',desc:'快速在线抠图与背景移除。',category:'设计师',url:'https://www.remove.bg/',icon:'◐'},
+{name:'稿定设计',desc:'海报、电商图、社媒配图与在线设计。',category:'设计师',url:'https://www.gaoding.com/',icon:'稿'},
+{name:'Runway',desc:'AI 视频生成、画面编辑与创意制作。',category:'AI视频',url:'https://runwayml.com/',icon:'▶',tag:'热门'},
+{name:'可灵 AI',desc:'AI 视频与图像生成，支持创意镜头制作。',category:'AI视频',url:'https://klingai.com/',icon:'可'},
+{name:'Pika',desc:'通过文本或图片生成创意短视频。',category:'AI视频',url:'https://pika.art/',icon:'P'},
+{name:'Luma Dream Machine',desc:'生成动态镜头与电影感 AI 视频。',category:'AI视频',url:'https://lumalabs.ai/dream-machine',icon:'L'},
+{name:'即梦视频',desc:'中文创作场景下的 AI 视频生成入口。',category:'AI视频',url:'https://jimeng.jianying.com/',icon:'影'},
+{name:'剪映',desc:'视频剪辑、字幕、模板与智能创作工具。',category:'影视后期',url:'https://www.capcut.cn/',icon:'剪'},
+{name:'剪映专业版',desc:'桌面端视频剪辑与创作工作流。',category:'影视后期',url:'https://www.capcut.cn/',icon:'映'},
+{name:'ElevenLabs',desc:'AI 配音、语音合成与声音创作。',category:'影视后期',url:'https://elevenlabs.io/',icon:'♫'},
+{name:'讯飞智作',desc:'文本转语音、配音与数字人视频制作。',category:'影视后期',url:'https://peiyin.xunfei.cn/',icon:'声'},
+{name:'Gamma',desc:'快速生成演示文稿、文档与网页。',category:'办公工具',url:'https://gamma.app/',icon:'G',tag:'PPT'},
+{name:'Canva 演示文稿',desc:'在线制作演示文稿、视觉内容与海报。',category:'办公工具',url:'https://www.canva.com/',icon:'▤'},
+{name:'Beautiful.ai',desc:'智能排版演示文稿与团队演示设计。',category:'办公工具',url:'https://www.beautiful.ai/',icon:'B'},
+{name:'讯飞智文',desc:'辅助生成 PPT、文档与汇报材料。',category:'办公工具',url:'https://zhiwen.xfyun.cn/',icon:'文'},
+{name:'WPS AI',desc:'文档、表格、演示与办公智能辅助。',category:'办公工具',url:'https://ai.wps.cn/',icon:'W'},
+{name:'Notion AI',desc:'笔记、知识库、写作与团队工作空间。',category:'办公工具',url:'https://www.notion.so/product/ai',icon:'N'},
+{name:'飞书',desc:'文档、表格、会议与团队协作办公。',category:'办公工具',url:'https://www.feishu.cn/',icon:'飞'},
+{name:'Grammarly',desc:'英语语法、拼写与表达润色辅助。',category:'AI写作',url:'https://www.grammarly.com/',icon:'G'},
+{name:'Notion AI 写作',desc:'辅助总结、改写、提纲与知识整理。',category:'AI写作',url:'https://www.notion.so/product/ai',icon:'N'},
+{name:'秘塔 AI 搜索',desc:'面向资料检索与结构化总结的 AI 搜索。',category:'AI写作',url:'https://metaso.cn/',icon:'秘',tag:'搜索'},
+{name:'Perplexity',desc:'带来源引用的 AI 搜索与研究助手。',category:'AI写作',url:'https://www.perplexity.ai/',icon:'P'},
+{name:'QuillBot',desc:'英文改写、摘要与写作辅助工具。',category:'AI写作',url:'https://quillbot.com/',icon:'Q'},
+{name:'GitHub Copilot',desc:'代码补全、解释与编程协作助手。',category:'编程代码',url:'https://github.com/features/copilot',icon:'⌘',tag:'开发'},
+{name:'Cursor',desc:'面向 AI 编程的代码编辑器。',category:'编程代码',url:'https://cursor.com/',icon:'›'},
+{name:'Replit',desc:'在线编程、运行项目与 AI 应用开发。',category:'编程代码',url:'https://replit.com/',icon:'R'},
+{name:'Codeium / Windsurf',desc:'AI 编程辅助与智能开发环境。',category:'编程代码',url:'https://windsurf.com/',icon:'〽'},
+{name:'v0',desc:'通过提示词生成前端界面与网页代码。',category:'编程代码',url:'https://v0.dev/',icon:'v0'},
+{name:'Lovable',desc:'用自然语言快速搭建网站和应用原型。',category:'编程代码',url:'https://lovable.dev/',icon:'♡'},
+{name:'Hugging Face',desc:'开源模型、数据集与 AI 演示空间社区。',category:'素材导航',url:'https://huggingface.co/',icon:'🤗'},
+{name:'即刻灵感 / Awwwards',desc:'浏览网页设计灵感与优秀数字作品。',category:'素材导航',url:'https://www.awwwards.com/',icon:'✦'},
+{name:'Unsplash',desc:'高质量免费摄影图片资源。',category:'素材导航',url:'https://unsplash.com/',icon:'U'},
+{name:'Pexels',desc:'免费照片与视频素材库。',category:'素材导航',url:'https://www.pexels.com/',icon:'P'},
+{name:'SketchUp',desc:'建筑与空间三维建模工具。',category:'3D建模',url:'https://www.sketchup.com/',icon:'◇'},
+{name:'Blender',desc:'免费开源的三维建模、动画与渲染软件。',category:'3D建模',url:'https://www.blender.org/',icon:'B'},
+{name:'Meshy',desc:'文本或图像生成 3D 模型。',category:'3D建模',url:'https://www.meshy.ai/',icon:'M'},
+{name:'Tripo AI',desc:'快速生成可用于创作的 3D 资产。',category:'3D建模',url:'https://www.tripo3d.ai/',icon:'△'},
+{name:'DeepL 翻译',desc:'多语言翻译与文本表达优化。',category:'办公生活',url:'https://www.deepl.com/translator',icon:'D'},
+{name:'ProcessOn',desc:'在线流程图、思维导图与协作绘图。',category:'办公生活',url:'https://www.processon.com/',icon:'⌘'},
+{name:'腾讯文档',desc:'在线文档、表格与多人协作。',category:'办公生活',url:'https://docs.qq.com/',icon:'文'},
+{name:'石墨文档',desc:'轻量在线文档与团队协作工具。',category:'办公生活',url:'https://shimo.im/',icon:'石'}
+];
+const categories=[['全部工具','✦'],['大模型','◉'],['AI绘图','🎨'],['AI写作','✍️'],['AI视频','▶️'],['办公工具','▤'],['编程代码','⌘'],['设计师','✧'],['影视后期','▻'],['3D建模','◇'],['素材导航','▧'],['办公生活','☼']];
+let activeCategory='全部工具',currentPage=1,query='';
+const $=s=>document.querySelector(s);
+function initConfig(){ $('#schoolLink').href=SCHOOL_URL;$('#footerSchoolLink').href=SCHOOL_URL;if(LOGO_URL){$('#schoolLogo').src=LOGO_URL;$('#schoolLogo').style.display='block';$('#logoFallback').style.display='none';}$('#year').textContent=new Date().getFullYear(); }
+function renderCategories(){ $('#categoryList').innerHTML=categories.map(([name,emoji])=>`<button class="category ${activeCategory===name?'active':''}" data-category="${name}"><span class="emoji">${emoji}</span>${name}</button>`).join(''); }
+function filteredTools(){return tools.filter(t=>(activeCategory==='全部工具'||t.category===activeCategory)&&(`${t.name} ${t.desc} ${t.category} ${t.tag||''}`).toLowerCase().includes(query.toLowerCase()));}
+function renderTools(){const list=filteredTools(),pages=Math.max(1,Math.ceil(list.length/PAGE_SIZE));currentPage=Math.min(currentPage,pages);const visible=list.slice((currentPage-1)*PAGE_SIZE,currentPage*PAGE_SIZE);$('#toolsGrid').innerHTML=visible.map((t,i)=>`<a class="tool-card" href="${t.url}" target="_blank" rel="noopener noreferrer" aria-label="打开${t.name}官网"><div class="tool-icon" style="--gradient:${['linear-gradient(135deg,#4f74e8,#8b67e8)','linear-gradient(135deg,#12a89d,#54c7bc)','linear-gradient(135deg,#ef8b56,#e65c83)','linear-gradient(135deg,#3e9fd8,#5269da)'][((currentPage-1)*PAGE_SIZE+i)%4]}">${t.icon}</div><div class="tool-info"><div class="tool-title-row"><span class="tool-title">${escapeHtml(t.name)}</span>${t.tag?`<span class="tag">${escapeHtml(t.tag)}</span>`:''}</div><p class="tool-desc">${escapeHtml(t.desc)}</p><div class="tool-foot"><span>${escapeHtml(t.category)}</span><span class="visit">访问官网 ↗</span></div></div></a>`).join('');$('#emptyState').style.display=list.length?'none':'block';$('#toolsGrid').style.display=list.length?'grid':'none';$('#resultCount').textContent=`共 ${list.length} 个工具`;$('#sectionTitle').textContent=activeCategory==='全部工具'?'热门 AI 工具':activeCategory+'工具';$('#sectionSubtitle').textContent=query?`搜索关键词：“${query}”`:'从这里开始，发现你的效率搭档';renderPagination(pages);}
+function renderPagination(pages){const el=$('#pagination');if(pages<=1){el.innerHTML='';return;}let html=`<button class="page-btn" data-page="${currentPage-1}" ${currentPage===1?'disabled':''}>上一页</button>`;for(let p=1;p<=pages;p++){if(p===1||p===pages||Math.abs(p-currentPage)<=1)html+=`<button class="page-btn ${p===currentPage?'active':''}" data-page="${p}">${p}</button>`;else if(Math.abs(p-currentPage)===2)html+='<span class="page-status">…</span>';}html+=`<span class="page-status">${currentPage}/${pages}</span><button class="page-btn" data-page="${currentPage+1}" ${currentPage===pages?'disabled':''}>下一页</button>`;el.innerHTML=html;}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function setCategory(c){activeCategory=c;currentPage=1;renderCategories();renderTools();}
+document.addEventListener('click',e=>{const cat=e.target.closest('[data-category]');if(cat){setCategory(cat.dataset.category);return;}const page=e.target.closest('[data-page]');if(page&&!page.disabled){currentPage=Number(page.dataset.page);renderTools();$('#tools').scrollIntoView({behavior:'smooth',block:'start'});return;}const quick=e.target.closest('[data-quick]');if(quick){setCategory(quick.dataset.quick);$('#topnav').classList.remove('open');}});
+$('#searchInput').addEventListener('input',e=>{query=e.target.value.trim();currentPage=1;renderTools();});$('#themeBtn').addEventListener('click',()=>{document.body.classList.toggle('dark');$('#themeBtn').textContent=document.body.classList.contains('dark')?'☀':'☾';});$('#menuBtn').addEventListener('click',()=>$('#topnav').classList.toggle('open'));
+initConfig();renderCategories();renderTools();
+</script>
+</body>
+</html>
